@@ -1,0 +1,70 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+   
+    height: 100hv;
+    width: 100px;
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    
+}
+.container{
+    background: rgb(0, 0, 0);
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.to-do{
+    background: rgb(202, 45, 45);
+    display: flex;
+    flex-direction: column;
+    min-width: 400px;
+    max-width: 600px;
+    border-radius: 5px;
+    height: 500px;
+   
+}
+
+.header{
+    padding: 2rem;
+}
+.header h1 {
+    color: aqua;
+    text-align: center;
+
+}
+.list{
+    flex-grow: 1;
+    padding: 2rem;
+    overflow-y: scroll;
+}
+.save{
+    padding: 2rem;
+    display: flex;
+}
+.save input{
+    border: 1px solid black;
+    border-radius: .5rem;
+    flex-grow: 1;
+    padding: .5rem;
+    margin: .5rem;
+    outline: none;
+}
+
+.save button{
+    outline: none;
+    border: none;
+    padding: .5rem;
+    margin: .5rem;
+    border-radius: 6px;
+    background: blue;
+    color: white;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
