@@ -9,17 +9,15 @@
   </head>
   <body>
     <div class="container">
-      <div class="to-do">
-        <div class="header">
-          <h1><span>0</span><span>List</span></h1>
-        </div>
-        <div class="list">
-          <ul></ul>
-        </div>
-        <form class="save">
-          <input type="text" />
-          <button>Add</button>
-        </form>
+      <h1>To do List</h1>
+      <form class="add-list">
+        <input type="text" id="add" placeholder="Add something new" />
+        <button id="btn">Add</button>
+      </form>
+      <div class="list">
+        <ul id="task">
+          <li></li>
+        </ul>
       </div>
     </div>
     <script src="project.js"></script>
