@@ -11,16 +11,17 @@ btn.addEventListener('click',() => {
     }else{
         let li = document.createElement('li');
         li.innerHTML = txt;
-        list.insertBefore(li, list.childNodes[0]);
+        task.insertBefore(li, task.childNodes[0]);
         input.value = '';
     }
     
 })
 
 
-task.addEventListener('click', e =>{
-    if(e.target.tagName == 'LI'){
-        e.target.classList.toggle('checked');
+task.addEventListener('click', m =>{
+    if(m.target.tagName == 'LI'){
+        m.target.classList.toggle('checked');
     }
 })
 
+removeEventListener(task)
