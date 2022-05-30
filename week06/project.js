@@ -24,4 +24,3 @@ task.addEventListener('click', m =>{
     }
 })
 
-removeEventListener(task)
