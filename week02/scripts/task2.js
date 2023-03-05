@@ -21,7 +21,7 @@ document.querySelector('#year').innerHTML = currentYear;
 
 // Step 5: declare and instantiate a variable to hold the name of your picture
 
-const profileImage = 'images/picture_er.jpg';
+const profileImage = 'images/erick.jpg';
 
 
 
