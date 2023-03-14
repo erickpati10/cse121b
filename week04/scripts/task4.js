@@ -33,7 +33,7 @@ placeLived = [
  
     { 
         place: 'Lehi, Utah',
-        length: '1 years',
+        length: '1 year',
       },
 ]
 // Step 8: For each property, add appropriate values as strings
