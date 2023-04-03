@@ -1,8 +1,8 @@
+
+
 let input =document.getElementById("add")
 let btn = document.getElementById("btn")
 let task = document.getElementById("task")
-
-
 
 btn.addEventListener('click', () =>{
     let list = input.value;

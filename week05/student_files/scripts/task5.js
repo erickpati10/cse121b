@@ -6,25 +6,25 @@
 let date = new Date();
 
 // Step 2: Declare another variable to hold the day of the week
-let  dayOfWeek;
+let day;
 // Step 3: Using the variable declared in Step 1, sign the value of the variable declared in Step 2 to the day of the week ( hint: getDay() )
-let day = date.getDay();
+let dayOfWeek = date.getDay();
 // Step 4: Declare a variable to hold a message that will be displayed
 let message;
 // Step 5: Using an if statement, if the day of the week is a weekday (i.e. Monday - Friday), set the message variable to the string 'Hang in there!'
 
         
-        if (day < 1 ||  day < 5 ) {
-          message =  "Hang in there!"
+if (dayOfWeek >= 1 && dayOfWeek <= 5 ) {
+    message =  "Hang in there!"
        
           
-        }
+}
       
 // Step 6: Using an else statement, set the message variable to 'Woohoo!  It is the weekend!'
- else {
-    message = "Woohoo! It is the weekend";
-  }
-
+else {
+  message = "Woohoo! It is the weekend";
+}
+console.log(message);
  
 /* SWITCH, CASE, BREAK */
 
@@ -54,6 +54,7 @@ switch (new Date().getDay()) {
     anotherMessage = "Saturday";
 }
 
+console.log(anotherMessage);
 /* OUTPUT */
 
 // Step 1: Assign the value of the first message variable to the HTML element with an ID of message1
@@ -61,7 +62,8 @@ switch (new Date().getDay()) {
 document.getElementById("message1").innerHTML = message;
 
 // Step 2: Assign the value of the second message variable to the HTML element with an ID of message2
-document.getElementById("message2").innerHTML =anotherMessage;
+document.getElementById("message2").innerHTML = anotherMessage;
+
 /* FETCH */
 // Step 1: Declare a global empty array variable to store a list of temples
 
@@ -78,39 +80,41 @@ let temples = []
 
 function output(temples){
 
-temples = temples;
+console.log(temples)
+
 let articleElement = document.getElementById('temples');
 
+
+
+for (let i = 0; i < temples.length; i++) {
+let temple = temples[i]
 let h3 = document.createElement("h3");
 let location = document.createElement("h4");
 let dedicated = document.createElement("h4");
 let image = document.createElement("img");
+let article = document.createElement("article");
 
-for (let i = 0; i < temples.length; i++) 
+  h3.innerHTML = temple.templeName;
+  location.innerHTML = temple.location;
+  dedicated.innerHTML = temple.dedicated;
+  image.setAttribute('src', temple.imageUrl);
 
- article = document.createElement("article");
-
-    h3.innerHTML = i.templeName;
-    location.innerHTML = i.location;
-    dedicated.innerHTML = i.dedicated;
-    image.setAttribute('src', i.image);
-
-    article.appendChild(h3);
-    article.appendChild(location);
-    article.appendChild(dedicated);
-    article.appendChild(image);
+  article.appendChild(h3);
+  article.appendChild(location);
+  article.appendChild(dedicated);
+  article.appendChild(image);
 // - Appends the <article> element to the HTML element with an ID of temples
-articleElement.appendChild(article);
+  articleElement.appendChild(article);
+}
 };
 
 // Step 3: Create another function called getTemples. Make it an async function.
 
 async function getTemples(){
   let response = await fetch("https://byui-cse.github.io/cse121b-course/week05/temples.json");
-  let url = await response.json();
-  console.log(url)
+  return await response.json();
 }
-getTemples(temples);
+getTemples().then((res)=> temples = res);
 // Step 4: In the function, using the built-in fetch method, call this absolute URL: 'https://byui-cse.github.io/cse121b-course/week05/temples.json'. Create a variable to hold the response from your fetch. You should have the program wait on this line until it finishes.
 // Step 5: Convert your fetch response into a Javascript object ( hint: .json() ). Store this in the templeList variable you declared earlier (Step 1). Make sure the the execution of the code waits here as well until it finishes.
 // Step 6: Finally, call the output function and pass it the list of temples. Execute your getTemples function to make sure it works correctly.
@@ -128,21 +132,18 @@ function reset() {
 // - Sorts the global temple list by the currently selected value of the HTML element with an ID of sortBy
 // - Calls the output function passing in the sorted list of temples
 
-function sortBy() {
+function sortBy(event) {
   // - Calls the reset function
   reset();
 
-  let ascending = document.getElementById('templeNameAscending');
-  let descensing = document.getElementById('templeNameDescending');
-  let sort = document.getElementById("sortBy")
-
+  let order = event.target.value
   
-  if (ascending) {
-    let sorted = temples.sort((b,a) => b-a);
+  if (order == "templeNameAscending") {
+    let sorted = temples.sort((a,b) => a.templeName < b.templeName ? -1:1);
     return output(sorted);
 
-  }else if (descensing) {
-    let sorted = temples.sort((b,a) => b-a);
+  }else if (order == "templeNameDescending") {
+    let sorted = temples.sort((a,b) => a.templeName > b.templeName ? -1:1);
     return output(sorted);
   };
   
@@ -158,3 +159,5 @@ document.getElementById('sortBy').addEventListener("change", sortBy);
 
 // Consider adding a "Filter by" feature that allows users to filter the list of temples
 // This will require changes to both the HTML and the JavaScript files
+
+
