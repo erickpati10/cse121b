@@ -22,7 +22,7 @@ if (dayOfWeek >= 1 && dayOfWeek <= 5 ) {
       
 // Step 6: Using an else statement, set the message variable to 'Woohoo!  It is the weekend!'
 else {
-  message = "hello";
+  message = "Woohoo! It is the weekend";
 }
 console.log(message);
  
